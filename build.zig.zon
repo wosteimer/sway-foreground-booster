@@ -1,0 +1,7 @@
+.{
+    .name = .sway_foreground_booster,
+    .version = "0.0.1",
+    .minimum_zig_version = "0.16.0",
+    .paths = .{""},
+    .fingerprint = 0xf9a68e2f8a0ee540,
+}
