@@ -1,6 +1,12 @@
 .{
     .name = .sway_foreground_booster,
     .version = "0.0.1",
+    .dependencies = .{
+        .sway = .{
+            .url = "git+https://github.com/wosteimer/sway.git#920498ac147597cc95326aa8658d3d46ce10a0a4",
+            .hash = "sway-0.0.0-DCwT07qRAABnJlMUa1lhuoOCFlEAase1lejo4a3G1VHd",
+        },
+    },
     .minimum_zig_version = "0.16.0",
     .paths = .{""},
     .fingerprint = 0xf9a68e2f8a0ee540,
