@@ -60,7 +60,7 @@ pub fn main(init: std.process.Init) !void {
             if (event.window.container.pid) |pid| {
                 const name = event.window.container.name orelse "unknown";
 
-                std.log.info("(focus) {s}: pid={d}", .{ name, pid });
+                std.log.debug("(focus) {s}: pid={d}", .{ name, pid });
 
                 const cgroup = getCgroupFromPid(init.gpa, init.io, pid) catch |err| {
                     switch (err) {
@@ -73,7 +73,7 @@ pub fn main(init: std.process.Init) !void {
                 };
                 defer init.gpa.free(cgroup);
 
-                std.log.info("(focus) pid={d}: cgroup={s}", .{ pid, cgroup });
+                std.log.debug("(focus) pid={d}: cgroup={s}", .{ pid, cgroup });
 
                 if (current) |c| {
                     if (std.mem.eql(u8, cgroup, c.cgroup)) {
@@ -90,7 +90,7 @@ pub fn main(init: std.process.Init) !void {
                             else => return err,
                         }
                     };
-                    std.log.info("(unboost) {s}:  cgroup={s}", .{ c.name, c.cgroup });
+                    std.log.debug("(unboost) {s}:  cgroup={s}", .{ c.name, c.cgroup });
                 }
                 _ = arena.reset(.{ .retain_with_limit = 4096 });
                 current = .{
@@ -111,7 +111,7 @@ pub fn main(init: std.process.Init) !void {
                         else => return err,
                     }
                 };
-                std.log.info("(boost) {s}: cgroup={s}", .{ name, cgroup });
+                std.log.debug("(boost) {s}: cgroup={s}", .{ name, cgroup });
             }
         }
     }
