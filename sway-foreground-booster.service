@@ -1,0 +1,9 @@
+[Unit]
+Description=Service for prioritizing VRAM usage for currently focused application on Sway
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/sway-foreground-booster
+
+[Install]
+WantedBy=graphical-session.target

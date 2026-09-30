@@ -1,5 +1,5 @@
 const std = @import("std");
-const Sway = @import("sway");
+const Sway = @import("Sway");
 
 const max_iterations = 64;
 const buf_capacity = 2048;
@@ -23,6 +23,7 @@ pub fn main(init: std.process.Init) !void {
 
     var addr = try std.Io.net.UnixAddress.init(sock);
     const connection = try addr.connect(init.io);
+    defer connection.close(init.io);
     std.log.info("connected to Sway IPC", .{});
 
     var reader_buf: [buf_capacity]u8 = undefined;
@@ -54,8 +55,7 @@ pub fn main(init: std.process.Init) !void {
 
     var current: ?struct { name: []const u8, cgroup: []const u8 } = null;
 
-    while (true) {
-        const event = try handler.next();
+    while (try handler.next()) |event| {
         if (std.mem.eql(u8, event.window.change, "focus")) {
             if (event.window.container.pid) |pid| {
                 const name = event.window.container.name orelse "unknown";

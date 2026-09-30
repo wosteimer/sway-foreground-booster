@@ -3,8 +3,8 @@
     .version = "0.0.1",
     .dependencies = .{
         .sway = .{
-            .url = "git+https://github.com/wosteimer/sway.git#920498ac147597cc95326aa8658d3d46ce10a0a4",
-            .hash = "sway-0.0.0-DCwT07qRAABnJlMUa1lhuoOCFlEAase1lejo4a3G1VHd",
+            .url = "git+https://github.com/wosteimer/sway.git#77b5ad30881fa63122ff4c3b70c498a48a8a4ed9",
+            .hash = "sway-0.0.0-DCwT0-CSAACSsh77U0P_z-oBHulN10YQSP8YOXteTeUm",
         },
     },
     .minimum_zig_version = "0.16.0",

@@ -14,7 +14,7 @@ pub fn build(b: *std.Build) void {
             .target = target,
             .optimize = optimize,
             .imports = &.{
-                .{ .name = "sway", .module = sway.module("Sway") },
+                .{ .name = "Sway", .module = sway.module("Sway") },
             },
         }),
     });
